@@ -130,11 +130,27 @@ class SignUpController: UIViewController,UIImagePickerControllerDelegate,UINavig
             })
         }
     }
+    let alreadyHavaAccountButton:UIButton = {
+        let button = UIButton(type: .system)
+        
+        let attributeText = NSMutableAttributedString(string: "Already hava an account?", attributes: [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 14),NSAttributedStringKey.foregroundColor:UIColor.lightGray])
+        
+        attributeText.append(NSMutableAttributedString(string: "Sign In", attributes: [NSAttributedStringKey.font:UIFont.boldSystemFont(ofSize: 14),NSAttributedStringKey.foregroundColor:UIColor.rgb(red: 17, green: 154, blue: 237)]))
+        button.setAttributedTitle(attributeText, for: .normal)
+        
+        button.setTitle("Don`t hava an account? Sign Up.", for: .normal)
+        button.addTarget(self, action: #selector(handleAlreadyHaveAccount), for: .touchUpInside)
+        return button
+    }()
+    @objc func handleAlreadyHaveAccount() {
+        navigationController?.popViewController(animated: true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        
+        view.addSubview(alreadyHavaAccountButton)
+        alreadyHavaAccountButton.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingRight: 0, paddingBottom: 0, width: 0, height: 50)
         view.addSubview(plusPhotoButton)
         
         plusPhotoButton.anchor(top: view.topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 40, paddingLeft: 0, paddingRight: 0, paddingBottom: 0, width: 140, height: 140)

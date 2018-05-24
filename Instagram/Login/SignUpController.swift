@@ -119,13 +119,19 @@ class SignUpController: UIViewController,UIImagePickerControllerDelegate,UINavig
                     guard let uid = user?.uid else { return }
                     let dictionaryValues = ["username":username,"profileImageUrl":profileImageUrl]
                     let values = [uid:dictionaryValues]
-                  Database.database().reference().child("users").updateChildValues(values,withCompletionBlock:{ (err,ref) in
-                                    if let err = err {
-                                        print("Faild to save user info:",err)
-                                        return
-                                    }
-                                    print("Successfuly saved user info to do:",ref)
-                                })
+                    Database.database().reference().child("users").updateChildValues(values,withCompletionBlock:{ (err,ref) in
+                        if let err = err {
+                            print("Faild to save user info:",err)
+                            return
+                        }
+                        print("Successfuly saved user info to do:",ref)
+                        guard let mainTabBarController = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController else { return }
+                        
+                        mainTabBarController.setupViewControllers()
+                        
+                        self.dismiss(animated: true, completion: nil)
+                        
+                    })
                 })
             })
         }

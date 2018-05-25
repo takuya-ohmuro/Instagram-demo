@@ -21,10 +21,31 @@ class UserProfileController:UICollectionViewController,UICollectionViewDelegateF
         
         collectionView?.register(UserProfileHeader.self, forSupplementaryViewOfKind:UICollectionElementKindSectionHeader , withReuseIdentifier: "headerId")
         
-        collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView?.register(UserProfilePhotoCell.self, forCellWithReuseIdentifier: cellId)
         
         setupLogOutButton()
+        
+        fetchPosts()
     }
+    var posts = [Post]()
+    fileprivate func fetchPosts() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let ref = Database.database().reference().child("posts").child(uid)
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            guard let dictinaries = snapshot.value as? [String:Any] else { return }
+            dictinaries.forEach({ (key,value) in
+                
+                guard let dictionary = value as? [String:Any] else { return }
+                let post =  Post(dictionary: dictionary)
+                self.posts.append(post)
+            })
+            self.collectionView?.reloadData()
+        }) { (err) in
+            print("Faield to fetch to posts:",err)
+        }
+    }
+    
     fileprivate func setupLogOutButton() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "gear").withRenderingMode(.alwaysOriginal), style:.plain , target: self, action: #selector(handleLogOut))
     }
@@ -51,11 +72,11 @@ class UserProfileController:UICollectionViewController,UICollectionViewDelegateF
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7
+        return posts.count
     }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
-        cell.backgroundColor = .purple
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! UserProfilePhotoCell
+        cell.post = posts[indexPath.item]
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

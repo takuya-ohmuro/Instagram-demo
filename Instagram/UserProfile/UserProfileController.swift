@@ -37,30 +37,14 @@ class UserProfileController:UICollectionViewController,UICollectionViewDelegateF
         
         ref.queryOrdered(byChild: "creationDate").observe(.childAdded , with:{ (snapshot) in
             guard let dictionary = snapshot.value as? [String:Any] else { return }
-            let post = Post(dictionary: dictionary)
-            self.posts.append(post)
-            
+            guard let user = self.user else { return }
+            let post = Post(user: user, dictionary: dictionary)
+            self.posts.insert(post, at: 0)
+//            self.posts.append(post)
+//            
             self.collectionView?.reloadData()
         }) { (err) in
             print("Faild to Fetch orederd Posts:",err)
-        }
-    }
-    
-    fileprivate func fetchPosts() {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        let ref = Database.database().reference().child("posts").child(uid)
-        ref.observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            guard let dictinaries = snapshot.value as? [String:Any] else { return }
-            dictinaries.forEach({ (key,value) in
-                
-                guard let dictionary = value as? [String:Any] else { return }
-                let post =  Post(dictionary: dictionary)
-                self.posts.append(post)
-            })
-            self.collectionView?.reloadData()
-        }) { (err) in
-            print("Faield to fetch to posts:",err)
         }
     }
     
@@ -135,12 +119,4 @@ class UserProfileController:UICollectionViewController,UICollectionViewDelegateF
     }
 }
 
-struct  User{
-    let userName:String
-    let profileImageUrl:String
-    init(dictionary:[String:Any]) {
-        self.userName = dictionary["username"] as? String ?? ""
-        self.profileImageUrl = dictionary["profileImageUrl"] as? String ?? ""
-    }
-}
 

@@ -13,14 +13,14 @@ class UserProfileHeader: UICollectionViewCell {
     
     var user:User? {
         didSet {
-            setupProfileImage()
-            
+            guard let profileImageUrl = user?.profileImageUrl else { return }
+            profileImageView.loadImage(urlString: profileImageUrl)
+
             userNameLabel.text = user?.userName
         }
     }
-    let profileImageView:UIImageView = {
-        let iv = UIImageView()
-        iv.backgroundColor = .green
+    let profileImageView:CustomImageView = {
+        let iv = CustomImageView()
         return iv
     }()
     
@@ -138,24 +138,7 @@ class UserProfileHeader: UICollectionViewCell {
     }
   
     
-    fileprivate func setupProfileImage() {
-        guard let profileImageUrl = user?.profileImageUrl else { return }
-        guard let url = URL(string: profileImageUrl) else { return }
-        
-        URLSession.shared.dataTask(with: url) { (data,response,err) in
-            
-            if let err = err {
-                print("Faild to feach profile Image:",err)
-                return
-            }
-            
-            guard let data = data else { return }
-            let image = UIImage(data: data)
-            DispatchQueue.main.async {
-                self.profileImageView.image = image
-            }
-            }.resume()
-    }
+    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

@@ -14,6 +14,7 @@
 		C6700A1E20B7B289000CC444 /* SharePhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6700A1D20B7B289000CC444 /* SharePhotoController.swift */; };
 		C6700A2120B8100E000CC444 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6700A2020B8100E000CC444 /* Post.swift */; };
 		C6700A2320B812E2000CC444 /* UserProfilePhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6700A2220B812E2000CC444 /* UserProfilePhotoCell.swift */; };
+		C67C45DE20BD20E9006263F2 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67C45DD20BD20E9006263F2 /* CustomImageView.swift */; };
 		C680148020B26EE4005008C8 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C680147F20B26EE4005008C8 /* MainTabBarController.swift */; };
 		C680148220B271A1005008C8 /* UserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C680148120B271A1005008C8 /* UserProfileController.swift */; };
 		C680148520B28C15005008C8 /* UserProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C680148420B28C15005008C8 /* UserProfileHeader.swift */; };
@@ -38,6 +39,7 @@
 		C6700A1D20B7B289000CC444 /* SharePhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePhotoController.swift; sourceTree = "<group>"; };
 		C6700A2020B8100E000CC444 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		C6700A2220B812E2000CC444 /* UserProfilePhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfilePhotoCell.swift; sourceTree = "<group>"; };
+		C67C45DD20BD20E9006263F2 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		C680147F20B26EE4005008C8 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		C680148120B271A1005008C8 /* UserProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileController.swift; sourceTree = "<group>"; };
 		C680148420B28C15005008C8 /* UserProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileHeader.swift; sourceTree = "<group>"; };
@@ -109,6 +111,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		C67C45DC20BD20C7006263F2 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C67C45DD20BD20E9006263F2 /* CustomImageView.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		C680148320B28BDB005008C8 /* UserProfile */ = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +153,7 @@
 				C6700A1F20B80FEC000CC444 /* Models */,
 				C66D03E120B6631100DBAFA3 /* AddPhotes */,
 				C680148320B28BDB005008C8 /* UserProfile */,
+				C67C45DC20BD20C7006263F2 /* Utils */,
 				C660E70C20B561F600F02BF3 /* Login */,
 				C689C55D20AE94B600495529 /* AppDelegate.swift */,
 				C680147F20B26EE4005008C8 /* MainTabBarController.swift */,
@@ -278,6 +289,7 @@
 				C6700A1E20B7B289000CC444 /* SharePhotoController.swift in Sources */,
 				C689C56020AE94B600495529 /* SignUpController.swift in Sources */,
 				C66D03E520B6C3FD00DBAFA3 /* PhotoSelectorCell.swift in Sources */,
+				C67C45DE20BD20E9006263F2 /* CustomImageView.swift in Sources */,
 				C6700A2120B8100E000CC444 /* Post.swift in Sources */,
 				C689C55E20AE94B600495529 /* AppDelegate.swift in Sources */,
 				C6700A2320B812E2000CC444 /* UserProfilePhotoCell.swift in Sources */,

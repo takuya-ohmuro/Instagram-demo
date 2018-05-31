@@ -28,7 +28,8 @@ class HomePostCell: UICollectionViewCell {
         let attributeText = NSMutableAttributedString(string: post.user.userName, attributes: [NSAttributedStringKey.font:UIFont.boldSystemFont(ofSize: 14)])
         attributeText.append(NSMutableAttributedString(string: "  \(post.caption)", attributes: [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 14)]))
         attributeText.append(NSMutableAttributedString(string: "\n\n", attributes: [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 4)]))
-        attributeText.append(NSMutableAttributedString(string: "1 week ago", attributes: [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 14),NSAttributedStringKey.foregroundColor:UIColor.gray]))
+        let timeAgoDisplay = post.creationDate.timeAgoDisplay()
+        attributeText.append(NSMutableAttributedString(string: timeAgoDisplay, attributes: [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 14),NSAttributedStringKey.foregroundColor:UIColor.gray]))
         captionLabel.attributedText = attributeText
     }
     let userProfileImageView:CustomImageView = {

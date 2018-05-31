@@ -25,6 +25,7 @@
 		C689C56820AE94B800495529 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C689C56620AE94B800495529 /* LaunchScreen.storyboard */; };
 		C689C57020AEA74300495529 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C689C56F20AEA74300495529 /* extensions.swift */; };
 		C689C57220AEB2C800495529 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C689C57120AEB2C800495529 /* GoogleService-Info.plist */; };
+		C6A0B01920BF903E004780C9 /* FiredatabaseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A0B01820BF903E004780C9 /* FiredatabaseUtils.swift */; };
 		C6BD641120BE40C1009EE77F /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BD641020BE40C1009EE77F /* HomeController.swift */; };
 		C6BD641320BE46A4009EE77F /* HomePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BD641220BE46A4009EE77F /* HomePostCell.swift */; };
 		C6BD641520BEAE36009EE77F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BD641420BEAE36009EE77F /* User.swift */; };
@@ -55,6 +56,7 @@
 		C689C56920AE94B800495529 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C689C56F20AEA74300495529 /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 		C689C57120AEB2C800495529 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C6A0B01820BF903E004780C9 /* FiredatabaseUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiredatabaseUtils.swift; sourceTree = "<group>"; };
 		C6BD641020BE40C1009EE77F /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		C6BD641220BE46A4009EE77F /* HomePostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePostCell.swift; sourceTree = "<group>"; };
 		C6BD641420BEAE36009EE77F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -121,7 +123,9 @@
 		C67C45DC20BD20C7006263F2 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				C689C56F20AEA74300495529 /* extensions.swift */,
 				C67C45DD20BD20E9006263F2 /* CustomImageView.swift */,
+				C6A0B01820BF903E004780C9 /* FiredatabaseUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -165,7 +169,6 @@
 				C660E70C20B561F600F02BF3 /* Login */,
 				C689C55D20AE94B600495529 /* AppDelegate.swift */,
 				C680147F20B26EE4005008C8 /* MainTabBarController.swift */,
-				C689C56F20AEA74300495529 /* extensions.swift */,
 				C689C56120AE94B600495529 /* Main.storyboard */,
 				C689C56420AE94B800495529 /* Assets.xcassets */,
 				C689C56620AE94B800495529 /* LaunchScreen.storyboard */,
@@ -311,6 +314,7 @@
 				C689C55E20AE94B600495529 /* AppDelegate.swift in Sources */,
 				C6700A2320B812E2000CC444 /* UserProfilePhotoCell.swift in Sources */,
 				C6BD641520BEAE36009EE77F /* User.swift in Sources */,
+				C6A0B01920BF903E004780C9 /* FiredatabaseUtils.swift in Sources */,
 				C680148020B26EE4005008C8 /* MainTabBarController.swift in Sources */,
 				C680148520B28C15005008C8 /* UserProfileHeader.swift in Sources */,
 				C680148220B271A1005008C8 /* UserProfileController.swift in Sources */,

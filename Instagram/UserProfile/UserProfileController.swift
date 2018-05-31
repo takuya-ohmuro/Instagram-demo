@@ -104,17 +104,10 @@ class UserProfileController:UICollectionViewController,UICollectionViewDelegateF
     var user:User?
     fileprivate func fetchUser() {
         guard let uid = Auth.auth().currentUser?.uid else { return }
-        Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
-            print(snapshot.value ?? "")
-            guard let dictionary = snapshot.value as? [String:Any] else { return }
-//            let profileImageUrl = dictionary["profileImageUrl"] as? String
-//            let username = dictionary["username"] as? String
-            
-            self.user = User(dictionary: dictionary)
+        Database.fetchUserWithUID(uid: uid) { (user) in
+            self.user = user
             self.navigationItem.title = self.user?.userName
             self.collectionView?.reloadData()
-        }) { (err) in
-            print("Faild to Fetch User:",err)
         }
     }
 }

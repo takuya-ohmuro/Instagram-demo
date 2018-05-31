@@ -26,6 +26,8 @@
 		C689C57020AEA74300495529 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C689C56F20AEA74300495529 /* extensions.swift */; };
 		C689C57220AEB2C800495529 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C689C57120AEB2C800495529 /* GoogleService-Info.plist */; };
 		C6A0B01920BF903E004780C9 /* FiredatabaseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A0B01820BF903E004780C9 /* FiredatabaseUtils.swift */; };
+		C6A0B01C20BF92BB004780C9 /* UserSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A0B01B20BF92BB004780C9 /* UserSearchController.swift */; };
+		C6A0B01E20BF9C2C004780C9 /* UserSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A0B01D20BF9C2C004780C9 /* UserSearchCell.swift */; };
 		C6BD641120BE40C1009EE77F /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BD641020BE40C1009EE77F /* HomeController.swift */; };
 		C6BD641320BE46A4009EE77F /* HomePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BD641220BE46A4009EE77F /* HomePostCell.swift */; };
 		C6BD641520BEAE36009EE77F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BD641420BEAE36009EE77F /* User.swift */; };
@@ -57,6 +59,8 @@
 		C689C56F20AEA74300495529 /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 		C689C57120AEB2C800495529 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C6A0B01820BF903E004780C9 /* FiredatabaseUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiredatabaseUtils.swift; sourceTree = "<group>"; };
+		C6A0B01B20BF92BB004780C9 /* UserSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchController.swift; sourceTree = "<group>"; };
+		C6A0B01D20BF9C2C004780C9 /* UserSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchCell.swift; sourceTree = "<group>"; };
 		C6BD641020BE40C1009EE77F /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		C6BD641220BE46A4009EE77F /* HomePostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePostCell.swift; sourceTree = "<group>"; };
 		C6BD641420BEAE36009EE77F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -161,6 +165,7 @@
 		C689C55C20AE94B600495529 /* Instagram */ = {
 			isa = PBXGroup;
 			children = (
+				C6A0B01A20BF9296004780C9 /* Search */,
 				C6BD640F20BE40A3009EE77F /* Home */,
 				C6700A1F20B80FEC000CC444 /* Models */,
 				C66D03E120B6631100DBAFA3 /* AddPhotes */,
@@ -176,6 +181,15 @@
 				C689C56920AE94B800495529 /* Info.plist */,
 			);
 			path = Instagram;
+			sourceTree = "<group>";
+		};
+		C6A0B01A20BF9296004780C9 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				C6A0B01B20BF92BB004780C9 /* UserSearchController.swift */,
+				C6A0B01D20BF9C2C004780C9 /* UserSearchCell.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		C6BD640F20BE40A3009EE77F /* Home */ = {
@@ -306,12 +320,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6A0B01E20BF9C2C004780C9 /* UserSearchCell.swift in Sources */,
 				C6700A1E20B7B289000CC444 /* SharePhotoController.swift in Sources */,
 				C689C56020AE94B600495529 /* SignUpController.swift in Sources */,
 				C66D03E520B6C3FD00DBAFA3 /* PhotoSelectorCell.swift in Sources */,
 				C67C45DE20BD20E9006263F2 /* CustomImageView.swift in Sources */,
 				C6700A2120B8100E000CC444 /* Post.swift in Sources */,
 				C689C55E20AE94B600495529 /* AppDelegate.swift in Sources */,
+				C6A0B01C20BF92BB004780C9 /* UserSearchController.swift in Sources */,
 				C6700A2320B812E2000CC444 /* UserProfilePhotoCell.swift in Sources */,
 				C6BD641520BEAE36009EE77F /* User.swift in Sources */,
 				C6A0B01920BF903E004780C9 /* FiredatabaseUtils.swift in Sources */,

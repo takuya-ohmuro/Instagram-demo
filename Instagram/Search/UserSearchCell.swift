@@ -9,6 +9,15 @@
 import UIKit
 
 class UserSearchCell: UICollectionViewCell {
+    var user:User? {
+        didSet {
+            userNameLabel.text = user?.userName
+            
+            guard let image = user?.profileImageUrl else { return }
+            profileImageView.loadImage(urlString: image)
+        }
+    }
+    
     let profileImageView:CustomImageView =  {
         let iv = CustomImageView()
         iv.backgroundColor = .red

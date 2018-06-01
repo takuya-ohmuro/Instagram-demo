@@ -16,6 +16,7 @@ class CustomImageView: UIImageView {
     
     func loadImage(urlString:String) {
         LastURLUsedToLoadImage = urlString
+        self.image = nil
         
         if let catchImage = imageCache[urlString] {
             self.image = catchImage

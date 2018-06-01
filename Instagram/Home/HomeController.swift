@@ -17,16 +17,31 @@ class HomeController: UICollectionViewController,UICollectionViewDelegateFlowLay
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(handleUpdateFeed), name: SharePhotoController.updateFeedNotificationName, object: nil)
+        
         collectionView?.backgroundColor = .white
         
         collectionView?.register(HomePostCell.self, forCellWithReuseIdentifier: cellId)
-        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+        collectionView?.refreshControl = refreshControl
         setupNavigationItem()
-        fetchPosts()
-
-        fetchFollowingUserIds()
-        
+        fetchAllPosts()
     }
+    @objc func handleUpdateFeed() {
+        handleRefresh()
+    }
+    
+    @objc func handleRefresh() {
+        print("refresh")
+        posts.removeAll()
+        fetchAllPosts()
+    }
+    fileprivate func fetchAllPosts() {
+        fetchPosts()
+        fetchFollowingUserIds()
+    }
+    
     fileprivate func fetchFollowingUserIds() {
         guard let uid = Auth.auth().currentUser?.uid else {return }
         Database.database().reference().child("following").child(uid).observeSingleEvent(of:.value, with: { (snapshot) in
@@ -52,6 +67,8 @@ class HomeController: UICollectionViewController,UICollectionViewDelegateFlowLay
 //        guard let uid = Auth.auth().currentUser?.uid else { return }
         let ref = Database.database().reference().child("posts").child(user.uid)
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            self.collectionView?.refreshControl?.endRefreshing()
             
             guard let dictinaries = snapshot.value as? [String:Any] else { return }
             dictinaries.forEach({ (key,value) in

@@ -8,7 +8,14 @@
 
 import UIKit
 
+protocol HomePostCellDelegate {
+    func didTapComment(post:Post)
+    
+}
+
 class HomePostCell: UICollectionViewCell {
+    
+    var delegate:HomePostCellDelegate?
     
     var post:Post?{
         didSet{
@@ -64,11 +71,17 @@ class HomePostCell: UICollectionViewCell {
         btn.setImage(#imageLiteral(resourceName: "like_unselected").withRenderingMode(.alwaysOriginal), for: .normal)
         return btn
     }()
-    let commentButton:UIButton = {
+    lazy var commentButton:UIButton = {
         let btn = UIButton(type: .system)
         btn.setImage(#imageLiteral(resourceName: "comment").withRenderingMode(.alwaysOriginal), for: .normal)
+        btn.addTarget(self, action: #selector(handleComment), for: .touchUpInside)
         return btn
     }()
+    @objc func handleComment() {
+        print("comment")
+        guard let post = post else { return }
+        delegate?.didTapComment(post:post)
+    }
     let sendMessageButton:UIButton = {
         let btn = UIButton(type: .system)
         btn.setImage(#imageLiteral(resourceName: "send2").withRenderingMode(.alwaysOriginal), for: .normal)

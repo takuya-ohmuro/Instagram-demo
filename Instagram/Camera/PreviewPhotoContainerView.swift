@@ -80,7 +80,7 @@ class PreviewPhotoContainerView: UIView {
         cancellButton.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 12, paddingLeft: 12, paddingRight: 0, paddingBottom: 0, width: 50, height: 50)
         
         addSubview(saveButton)
-        saveButton.anchor(top: nil, left: leftAnchor, bottom: bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 24, paddingRight: 0, paddingBottom: 24, width: 50, height: 50)
+        saveButton.anchor(top: nil, left: leftAnchor, bottom: bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 24, paddingRight: 0, paddingBottom: -24, width: 50, height: 50)
     }
     
     required init?(coder aDecoder: NSCoder) {

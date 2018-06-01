@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C634C0FB20C0FB7C004A712F /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C634C0FA20C0FB7C004A712F /* CameraController.swift */; };
 		C660E70E20B5621300F02BF3 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C660E70D20B5621300F02BF3 /* LoginController.swift */; };
 		C66D03E320B6633800DBAFA3 /* PhotoSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66D03E220B6633800DBAFA3 /* PhotoSelectorController.swift */; };
 		C66D03E520B6C3FD00DBAFA3 /* PhotoSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66D03E420B6C3FD00DBAFA3 /* PhotoSelectorCell.swift */; };
@@ -38,6 +39,7 @@
 		2CE0AB9F6299CE0092153DCB /* Pods-Instagram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Instagram/Pods-Instagram.debug.xcconfig"; sourceTree = "<group>"; };
 		83376653753B8EDAF9D79D84 /* Pods_Instagram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Instagram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEDB125C4DDE29E847EC7494 /* Pods-Instagram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram.release.xcconfig"; path = "Pods/Target Support Files/Pods-Instagram/Pods-Instagram.release.xcconfig"; sourceTree = "<group>"; };
+		C634C0FA20C0FB7C004A712F /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		C660E70D20B5621300F02BF3 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		C66D03E220B6633800DBAFA3 /* PhotoSelectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorController.swift; sourceTree = "<group>"; };
 		C66D03E420B6C3FD00DBAFA3 /* PhotoSelectorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorCell.swift; sourceTree = "<group>"; };
@@ -93,6 +95,14 @@
 				83376653753B8EDAF9D79D84 /* Pods_Instagram.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C634C0F920C0FB55004A712F /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				C634C0FA20C0FB7C004A712F /* CameraController.swift */,
+			);
+			path = Camera;
 			sourceTree = "<group>";
 		};
 		C660E70C20B561F600F02BF3 /* Login */ = {
@@ -165,6 +175,7 @@
 		C689C55C20AE94B600495529 /* Instagram */ = {
 			isa = PBXGroup;
 			children = (
+				C634C0F920C0FB55004A712F /* Camera */,
 				C6A0B01A20BF9296004780C9 /* Search */,
 				C6BD640F20BE40A3009EE77F /* Home */,
 				C6700A1F20B80FEC000CC444 /* Models */,
@@ -329,6 +340,7 @@
 				C689C55E20AE94B600495529 /* AppDelegate.swift in Sources */,
 				C6A0B01C20BF92BB004780C9 /* UserSearchController.swift in Sources */,
 				C6700A2320B812E2000CC444 /* UserProfilePhotoCell.swift in Sources */,
+				C634C0FB20C0FB7C004A712F /* CameraController.swift in Sources */,
 				C6BD641520BEAE36009EE77F /* User.swift in Sources */,
 				C6A0B01920BF903E004780C9 /* FiredatabaseUtils.swift in Sources */,
 				C680148020B26EE4005008C8 /* MainTabBarController.swift in Sources */,
@@ -484,16 +496,20 @@
 			baseConfigurationReference = 2CE0AB9F6299CE0092153DCB /* Pods-Instagram.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = J8MP6TX9F5;
 				INFOPLIST_FILE = Instagram/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = aaa.Instagram;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.primetheory.Insatgram;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -502,16 +518,20 @@
 			baseConfigurationReference = AEDB125C4DDE29E847EC7494 /* Pods-Instagram.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = J8MP6TX9F5;
 				INFOPLIST_FILE = Instagram/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = aaa.Instagram;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.primetheory.Insatgram;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

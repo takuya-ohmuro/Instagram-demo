@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class CameraController: UIViewController {
+class CameraController: UIViewController,AVCapturePhotoCaptureDelegate {
     
     let dismissButon:UIButton = {
         let btn = UIButton(type: .system)
@@ -27,15 +27,14 @@ class CameraController: UIViewController {
         btn.addTarget(self, action: #selector(handleCaputureButton), for: .touchUpInside)
         return btn
     }()
-    @objc func handleCaputureButton() {
-        print("Captuing photo....")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupCaputureSession()
         setupHUD()
+    }
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
     func setupHUD() {
         view.addSubview(caputurePhotoButton)
@@ -44,6 +43,30 @@ class CameraController: UIViewController {
         caputurePhotoButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         dismissButon.anchor(top: view.topAnchor, left: nil, bottom: nil, right: view.rightAnchor, paddingTop: 12, paddingLeft: 0, paddingRight: -12, paddingBottom: 0, width: 50, height: 50)
     }
+    @objc func handleCaputureButton() {
+        print("Captuing photo....")
+        let setting = AVCapturePhotoSettings()
+       guard let previewFormatType = setting.availablePreviewPhotoPixelFormatTypes.first else { return }
+        setting.previewPhotoFormat = [kCVPixelBufferPixelFormatTypeKey as String : previewFormatType]
+        output.capturePhoto(with: setting, delegate: self)
+    }
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photoSampleBuffer: CMSampleBuffer?, previewPhoto previewPhotoSampleBuffer: CMSampleBuffer?, resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Error?) {
+        guard let sample = photoSampleBuffer else { return }
+        guard let imageData = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: sample, previewPhotoSampleBuffer: previewPhotoSampleBuffer) else { return }
+        let previewImage = UIImage(data: imageData)
+        
+        let containerView = PreviewPhotoContainerView()
+        containerView.previewImageView.image = previewImage
+        view.addSubview(containerView)
+        containerView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingRight: 0, paddingBottom: 0, width: 0, height: 0)
+        
+//        let previewImageView = UIImageView(image: previewImage)
+//        view.addSubview(previewImageView)
+//        view.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingRight: 0, paddingBottom: 0, width: 0, height: 0)
+    }
+    
+    
+    let output = AVCapturePhotoOutput()
    fileprivate func setupCaputureSession() {
         let caputureSession = AVCaptureSession()
     guard let caputureDevice = AVCaptureDevice.default(for: .video) else { return }
@@ -55,7 +78,7 @@ class CameraController: UIViewController {
     } catch let err {
         print("Could not setup camera input;",err)
     }
-    let output = AVCapturePhotoOutput()
+    
     if caputureSession.canAddOutput(output) {
          caputureSession.addOutput(output)
     }

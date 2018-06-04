@@ -36,6 +36,8 @@
 		C6BD641120BE40C1009EE77F /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BD641020BE40C1009EE77F /* HomeController.swift */; };
 		C6BD641320BE46A4009EE77F /* HomePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BD641220BE46A4009EE77F /* HomePostCell.swift */; };
 		C6BD641520BEAE36009EE77F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BD641420BEAE36009EE77F /* User.swift */; };
+		C6BDE52D20C4DEF600B05307 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BDE52C20C4DEF600B05307 /* CommentCell.swift */; };
+		C6BDE52F20C4E4AD00B05307 /* Comments.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BDE52E20C4E4AD00B05307 /* Comments.swift */; };
 		CFBC1EB2893EFEC8956EF747 /* Pods_Instagram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83376653753B8EDAF9D79D84 /* Pods_Instagram.framework */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +76,8 @@
 		C6BD641020BE40C1009EE77F /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		C6BD641220BE46A4009EE77F /* HomePostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePostCell.swift; sourceTree = "<group>"; };
 		C6BD641420BEAE36009EE77F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		C6BDE52C20C4DEF600B05307 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		C6BDE52E20C4E4AD00B05307 /* Comments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comments.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +145,7 @@
 			children = (
 				C6700A2020B8100E000CC444 /* Post.swift */,
 				C6BD641420BEAE36009EE77F /* User.swift */,
+				C6BDE52E20C4E4AD00B05307 /* Comments.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -220,6 +225,7 @@
 				C6BD641020BE40C1009EE77F /* HomeController.swift */,
 				C6BD641220BE46A4009EE77F /* HomePostCell.swift */,
 				C634C10220C1440C004A712F /* CommentsController.swift */,
+				C6BDE52C20C4DEF600B05307 /* CommentCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -354,8 +360,10 @@
 				C6700A2320B812E2000CC444 /* UserProfilePhotoCell.swift in Sources */,
 				C634C0FB20C0FB7C004A712F /* CameraController.swift in Sources */,
 				C6BD641520BEAE36009EE77F /* User.swift in Sources */,
+				C6BDE52F20C4E4AD00B05307 /* Comments.swift in Sources */,
 				C6A0B01920BF903E004780C9 /* FiredatabaseUtils.swift in Sources */,
 				C680148020B26EE4005008C8 /* MainTabBarController.swift in Sources */,
+				C6BDE52D20C4DEF600B05307 /* CommentCell.swift in Sources */,
 				C680148520B28C15005008C8 /* UserProfileHeader.swift in Sources */,
 				C634C10120C13A35004A712F /* CustomAnimationDismiss.swift in Sources */,
 				C680148220B271A1005008C8 /* UserProfileController.swift in Sources */,

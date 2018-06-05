@@ -38,6 +38,8 @@
 		C6BD641520BEAE36009EE77F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BD641420BEAE36009EE77F /* User.swift */; };
 		C6BDE52D20C4DEF600B05307 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BDE52C20C4DEF600B05307 /* CommentCell.swift */; };
 		C6BDE52F20C4E4AD00B05307 /* Comments.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BDE52E20C4E4AD00B05307 /* Comments.swift */; };
+		C6E7909B20C67A70006FADBF /* CommentInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E7909A20C67A70006FADBF /* CommentInputAccessoryView.swift */; };
+		C6E7909D20C68E01006FADBF /* CommentInputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E7909C20C68E01006FADBF /* CommentInputTextView.swift */; };
 		CFBC1EB2893EFEC8956EF747 /* Pods_Instagram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83376653753B8EDAF9D79D84 /* Pods_Instagram.framework */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +80,8 @@
 		C6BD641420BEAE36009EE77F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C6BDE52C20C4DEF600B05307 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		C6BDE52E20C4E4AD00B05307 /* Comments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comments.swift; sourceTree = "<group>"; };
+		C6E7909A20C67A70006FADBF /* CommentInputAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentInputAccessoryView.swift; sourceTree = "<group>"; };
+		C6E7909C20C68E01006FADBF /* CommentInputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentInputTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +230,8 @@
 				C6BD641220BE46A4009EE77F /* HomePostCell.swift */,
 				C634C10220C1440C004A712F /* CommentsController.swift */,
 				C6BDE52C20C4DEF600B05307 /* CommentCell.swift */,
+				C6E7909A20C67A70006FADBF /* CommentInputAccessoryView.swift */,
+				C6E7909C20C68E01006FADBF /* CommentInputTextView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -365,10 +371,12 @@
 				C680148020B26EE4005008C8 /* MainTabBarController.swift in Sources */,
 				C6BDE52D20C4DEF600B05307 /* CommentCell.swift in Sources */,
 				C680148520B28C15005008C8 /* UserProfileHeader.swift in Sources */,
+				C6E7909D20C68E01006FADBF /* CommentInputTextView.swift in Sources */,
 				C634C10120C13A35004A712F /* CustomAnimationDismiss.swift in Sources */,
 				C680148220B271A1005008C8 /* UserProfileController.swift in Sources */,
 				C689C57020AEA74300495529 /* extensions.swift in Sources */,
 				C634C0FD20C1205B004A712F /* PreviewPhotoContainerView.swift in Sources */,
+				C6E7909B20C67A70006FADBF /* CommentInputAccessoryView.swift in Sources */,
 				C660E70E20B5621300F02BF3 /* LoginController.swift in Sources */,
 				C6BD641320BE46A4009EE77F /* HomePostCell.swift in Sources */,
 				C6700A1C20B79C8D000CC444 /* PhotoSelectorHeader.swift in Sources */,

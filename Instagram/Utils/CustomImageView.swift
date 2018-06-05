@@ -6,40 +6,47 @@
 //  Copyright © 2018年 takuyaOhmuro. All rights reserved.
 //
 
+
 import UIKit
 
-var imageCache = [String:UIImage]()
+var imageCache = [String: UIImage]()
 
 class CustomImageView: UIImageView {
     
-    var LastURLUsedToLoadImage:String?
+    var lastURLUsedToLoadImage: String?
     
-    func loadImage(urlString:String) {
-        LastURLUsedToLoadImage = urlString
+    func loadImage(urlString: String) {
+        lastURLUsedToLoadImage = urlString
+        
         self.image = nil
         
-        if let catchImage = imageCache[urlString] {
-            self.image = catchImage
+        if let cachedImage = imageCache[urlString] {
+            self.image = cachedImage
             return
         }
         
         guard let url = URL(string: urlString) else { return }
+        
         URLSession.shared.dataTask(with: url) { (data, response, err) in
             if let err = err {
-                print("Failed to fetch post image:",err)
+                print("Failed to fetch post image:", err)
                 return
             }
-            if url.absoluteString != self.LastURLUsedToLoadImage{
+            
+            if url.absoluteString != self.lastURLUsedToLoadImage {
                 return
             }
             
             guard let imageData = data else { return }
-            let photoData = UIImage(data: imageData)
-            imageCache[url.absoluteString] = photoData
+            
+            let photoImage = UIImage(data: imageData)
+            
+            imageCache[url.absoluteString] = photoImage
             
             DispatchQueue.main.async {
-                self.image = photoData
+                self.image = photoImage
             }
+            
             }.resume()
     }
 }

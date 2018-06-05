@@ -38,7 +38,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     @objc func handleRefresh() {
         print("Handling refresh..")
-        posts.removeAll()
+        self.posts.removeAll(keepingCapacity: false)
         fetchAllPosts()
     }
     
@@ -89,23 +89,28 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
                 
                 var post = Post(user: user, dictionary: dictionary)
                 post.id = key
+                
                 guard let uid = Auth.auth().currentUser?.uid else { return }
                 Database.database().reference().child("likes").child(key).child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
-                    print(snapshot)
+                    //                    print(snapshot)
+                    
                     if let value = snapshot.value as? Int, value == 1 {
                         post.hasLiked = true
                     } else {
                         post.hasLiked = false
                     }
+                    
                     self.posts.append(post)
                     self.posts.sort(by: { (p1, p2) -> Bool in
                         return p1.creationDate.compare(p2.creationDate) == .orderedDescending
                     })
-                     self.collectionView?.reloadData()
+                    self.collectionView?.reloadData()
+                    
                 }, withCancel: { (err) in
-                    print("Faild to fetch like info for post:",err)
+                    print("Failed to fetch like info for post:", err)
                 })
             })
+            
         }) { (err) in
             print("Failed to fetch posts:", err)
         }
@@ -141,8 +146,9 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! HomePostCell
-        
-        cell.post = posts[indexPath.item]
+        if indexPath.item < posts.count {
+            cell.post = posts[indexPath.item]
+        }
         cell.delegate = self
         
         return cell
@@ -155,27 +161,34 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         commentsController.post = post
         navigationController?.pushViewController(commentsController, animated: true)
     }
+    
     func didLike(for cell: HomePostCell) {
-        print("protocol")
         guard let indexPath = collectionView?.indexPath(for: cell) else { return }
+        
         var post = self.posts[indexPath.item]
         print(post.caption)
         
         guard let postId = post.id else { return }
+        
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
-        let values = [uid:post.hasLiked == true ? 0 : 1]
+        let values = [uid: post.hasLiked == true ? 0 : 1]
         Database.database().reference().child("likes").child(postId).updateChildValues(values) { (err, _) in
+            
             if let err = err {
-                print("Failed to like post:",err)
+                print("Failed to like post:", err)
                 return
             }
-            print("SuccessFully liked post:")
+            
+            print("Successfully liked post.")
+            
             post.hasLiked = !post.hasLiked
+            
             self.posts[indexPath.item] = post
+            
             self.collectionView?.reloadItems(at: [indexPath])
+            
         }
     }
-    
     
 }

@@ -12,22 +12,34 @@ class CommentCell: UICollectionViewCell {
     
     var comment:Comment? {
         didSet{
-            textLabel.text = comment?.text
+            guard let comment = comment else { return }
+            let attributeText = NSMutableAttributedString(string: comment.user.userName, attributes: [NSAttributedStringKey.font:UIFont.boldSystemFont(ofSize: 14)])
+            attributeText.append(NSMutableAttributedString(string: "  " + comment.text, attributes: [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 14)]))
+            textView.attributedText = attributeText
+            profileImage.loadImage(urlString: comment.user.profileImageUrl)
         }
     }
-    let textLabel:UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.numberOfLines = 0
-        label.backgroundColor = .lightGray
-        return label
+    let textView:UITextView = {
+        let tv = UITextView()
+        tv.font = UIFont.systemFont(ofSize: 14)
+        tv.isScrollEnabled = false
+        tv.isEditable = false
+        return tv
+    }()
+    let profileImage:CustomImageView = {
+        let iv = CustomImageView()
+        iv.clipsToBounds = true
+        iv.contentMode = .scaleAspectFill
+        return iv
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .yellow
-        addSubview(textLabel)
-        textLabel.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 4, paddingLeft: 4, paddingRight: -4, paddingBottom: -4, width: 0, height: 0)
+        addSubview(profileImage)
+        addSubview(textView)
+        profileImage.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 8, paddingLeft: 8, paddingRight: 0, paddingBottom: 0, width: 40, height: 40)
+        profileImage.layer.cornerRadius = 40 / 2
+        textView.anchor(top: topAnchor, left: profileImage.rightAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 4, paddingLeft: 4, paddingRight: -4, paddingBottom: -4, width: 0, height: 0)
     }
     
     required init?(coder aDecoder: NSCoder) {

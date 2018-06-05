@@ -50,7 +50,7 @@ class LoginController: UIViewController {
         let isEmailVaild = emailTextField.text?.count ?? 0 > 0 && passwordTextField.text?.count ?? 0 > 0
         if isEmailVaild {
             LoginButton.isEnabled = true
-            LoginButton.backgroundColor = UIColor.rgb(red: 17, green: 154, blue: 244)
+            LoginButton.backgroundColor = .mainBlue()
         }else{
             LoginButton.isEnabled = false
             LoginButton.backgroundColor = UIColor.rgb(red: 149, green: 204, blue: 244)

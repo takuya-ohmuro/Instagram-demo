@@ -9,7 +9,13 @@
 import UIKit
 import Firebase
 
+protocol UserProfileHeaderDelegate {
+    func handleGrid()
+    func handleList()
+}
+
 class UserProfileHeader: UICollectionViewCell {
+    var deleagete:UserProfileHeaderDelegate?
     
     var user:User? {
         didSet {
@@ -78,18 +84,30 @@ class UserProfileHeader: UICollectionViewCell {
         return iv
     }()
     
-    let gridButton:UIButton = {
+    lazy var gridButton:UIButton = {
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "grid"), for: .normal)
-        
+        button.addTarget(self, action: #selector(handleGrid), for: .touchUpInside)
         return button
     }()
-    let listButton:UIButton = {
+    @objc func handleGrid() {
+        gridButton.tintColor = .mainBlue()
+        listButton.tintColor = UIColor(white: 0, alpha: 0.2)
+        deleagete?.handleGrid()
+    }
+    lazy var listButton:UIButton = {
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "list"), for: .normal)
         button.tintColor = UIColor(white: 0, alpha: 0.2)
+        button.addTarget(self, action: #selector(handleList), for: .touchUpInside)
         return button
     }()
+    @objc func handleList() {
+        print("handle List")
+        listButton.tintColor = .mainBlue()
+        gridButton.tintColor = UIColor(white: 0, alpha: 0.2)
+        deleagete?.handleList()
+    }
     let bookButton:UIButton = {
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "ribbon"), for: .normal)
